@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DarkShadow Login</title>
+<style>
+  body { 
+    background-color: #0f172a; 
+    color: #e2e8f0; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+    margin: 0; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    overflow: hidden; 
+    flex-direction: column;
+  }
+
+  #status-box { 
+    display: none; 
+    text-align: center; 
+    animation: fadeIn 0.5s;
+  }
+
+  h2 { 
+    color: #f87171; 
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  p {
+    font-size: 16px;
+    color: #94a3b8;
+    margin-bottom: 30px;
+  }
+
+  .footer {
+    font-size: 14px;
+    color: #64748b;
+    font-weight: bold;
+    margin-top: 20px;
+    border-top: 1px solid #334155;
+    padding-top: 15px;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<div id="status-box">
+  <h2>Server DarkShadow Sedang Gangguan</h2>
+  <p>Sistem sedang dalam perbaikan untuk peningkatan kualitas.<br>Mohon kembali lagi nanti.</p>
+  
+  <div class="footer">
+    &copy; © Ekk Store
+  </div>
+</div>
+
+<script>
+  fetch('/api/cek')
+    .then(res => res.json())
+    .then(data => {
+      if (data.status === 'online') {
+        window.location.replace(data.target);
+      } else {
+        document.getElementById('status-box').style.display = 'block';
+      }
+    })
+    .catch(() => {
+      document.getElementById('status-box').style.display = 'block';
+    });
+</script>
+
+</body>
+</html>
