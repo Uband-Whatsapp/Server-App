@@ -99,62 +99,32 @@ Proses perbaikan sedang berlangsung untuk memulihkan server secepat mungkin.
 </div>
 
 <script>
-fetch('/api/cek')
-  .then(res => res.json())
-  .then(data => {
-    if (data.status === 'online') {
-      window.location.replace(data.target);
-    } else {
-      document.getElementById('status-box').style.display = 'block';
-    }
-  })
-  .catch(() => {
-    document.getElementById('status-box').style.display = 'block';
-  });
-</script>
-
-</body>
-</html>  }
-
-  .footer {
-    font-size: 14px;
-    color: #64748b;
-    font-weight: bold;
-    margin-top: 20px;
-    border-top: 1px solid #334155;
-    padding-top: 15px;
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-</style>
-</head>
-<body>
-
-<div id="status-box">
-  <h2>Server DarkShadow Sedang Gangguan</h2>
-  <p>Sistem sedang dalam perbaikan untuk peningkatan kualitas.<br>Mohon kembali lagi nanti.</p>
-  
-  <div class="footer">
-    &copy; © Ekk Store
-  </div>
-</div>
-
-<script>
+// Fungsi untuk mengecek status
+function cekServer() {
   fetch('/api/cek')
     .then(res => res.json())
     .then(data => {
       if (data.status === 'online') {
+        // Jika Online: Stop pengecekan ulang & Pindahkan user
+        clearInterval(pengecekanOtomatis);
         window.location.replace(data.target);
       } else {
+        // Jika Offline: Tampilkan pesan error (tetap di halaman ini)
         document.getElementById('status-box').style.display = 'block';
+        console.log("Server masih offline, mengecek lagi dalam 5 detik...");
       }
     })
     .catch(() => {
+      // Jika Error fetch: Tampilkan pesan error
       document.getElementById('status-box').style.display = 'block';
     });
+}
+
+// 1. Jalankan pengecekan pertama kali saat web dibuka
+cekServer();
+
+// 2. Jalankan pengecekan otomatis setiap 5 detik (5000 ms)
+const pengecekanOtomatis = setInterval(cekServer, 5000);
 </script>
 
 </body>
