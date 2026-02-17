@@ -4,37 +4,117 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DarkShadow Login</title>
+
 <style>
-  body { 
-    background-color: #0f172a; 
-    color: #e2e8f0; 
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    height: 100vh; 
-    margin: 0; 
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-    overflow: hidden; 
-    flex-direction: column;
-  }
+body {
+  background: #ffffff; /* Putih */
+  color: #020617;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100vh;
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  padding-top: 120px; /* Turun dikit */
+}
 
-  #status-box { 
-    display: none; 
-    text-align: center; 
-    animation: fadeIn 0.5s;
-  }
+/* Container tanpa box */
+#status-box {
+  display: none;
+  text-align: center;
+  max-width: 340px;
+  width: 90%;
+  animation: fadeIn 0.5s ease;
+}
 
-  h2 { 
-    color: #f87171; 
-    font-size: 24px;
-    margin-bottom: 10px;
+/* Foto profil */
+.profile {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid #BE60EE;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+/* Judul */
+h2 {
+  color: #0f172a;
+  font-size: 22px;
+  margin: 10px 0;
+  font-weight: 600;
+}
+
+/* Deskripsi */
+p {
+  font-size: 15px;
+  color: #475569;
+  line-height: 1.6;
+  margin-bottom: 22px;
+}
+
+/* Footer */
+.footer {
+  font-size: 12px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* Animasi */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
   }
-  
-  p {
-    font-size: 16px;
-    color: #94a3b8;
-    margin-bottom: 30px;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
+}
+</style>
+</head>
+
+<body>
+
+<div id="status-box">
+
+  <!-- Foto Profil -->
+  <img 
+    src="https://files.catbox.moe/7dyh6m.jpg" 
+    alt="Profile"
+    class="profile"
+  >
+
+<h2>Server DarkShadow Mengalami Gangguan.</h2>
+
+<p>
+Saat ini layanan DarkShadow tidak dapat diakses sementara karena gangguan teknis.
+Proses perbaikan sedang berlangsung untuk memulihkan server secepat mungkin.
+</p>
+
+<div class="footer">
+  © Ekk Store.
+  </div>
+
+</div>
+
+<script>
+fetch('/api/cek')
+  .then(res => res.json())
+  .then(data => {
+    if (data.status === 'online') {
+      window.location.replace(data.target);
+    } else {
+      document.getElementById('status-box').style.display = 'block';
+    }
+  })
+  .catch(() => {
+    document.getElementById('status-box').style.display = 'block';
+  });
+</script>
+
+</body>
+</html>  }
 
   .footer {
     font-size: 14px;
