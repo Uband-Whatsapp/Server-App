@@ -1,6 +1,6 @@
 // api/cek.js
 export default async function handler(req, res) {
-  const target = 'http://yangkillserveryatim.satsukareze.my.id:1997';
+  const target = 'http://kyzz-panel.strikedigital.my.id:5553';
   try {
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 2000); // 4 detik timeout
