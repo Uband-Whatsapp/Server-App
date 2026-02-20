@@ -3,7 +3,7 @@ export default async function handler(req, res) {
   const target = 'http://servernew.fazzhosting.web.id:2249';
   try {
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 2000); // 0,5detik timeout
+    const timeoutId = setTimeout(() => controller.abort(), 3000); // 0,5detik timeout
 
     const response = await fetch(target, { method: 'GET', signal: controller.signal });
     clearTimeout(timeoutId);
