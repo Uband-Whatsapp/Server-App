@@ -111,7 +111,7 @@ function cekServer() {
       } else {
         // Jika Offline: Tampilkan pesan error (tetap di halaman ini)
         document.getElementById('status-box').style.display = 'block';
-        console.log("Server masih offline, mengecek lagi dalam 5 detik...");
+        console.log("Server masih offline, mengecek lagi dalam 0,5 detik...");
       }
     })
     .catch(() => {
@@ -123,8 +123,8 @@ function cekServer() {
 // 1. Jalankan pengecekan pertama kali saat web dibuka
 cekServer();
 
-// 2. Jalankan pengecekan otomatis setiap 5 detik (5000 ms)
-const pengecekanOtomatis = setInterval(cekServer, 5000);
+// 2. Jalankan pengecekan otomatis setiap 0,5 detik (500 ms)
+const pengecekanOtomatis = setInterval(cekServer, 500);
 </script>
 
 </body>
