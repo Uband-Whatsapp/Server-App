@@ -1,6 +1,6 @@
 // api/cek.js
 export default async function handler(req, res) {
-  const target = 'http://nezu-panel.hostkita.help:2095';
+  const target = 'http://panel-kyz.getattr.site:11718';
   try {
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 10000); // 0,5detik timeout
