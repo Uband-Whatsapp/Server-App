@@ -1,6 +1,6 @@
 // api/cek.js
 export default async function handler(req, res) {
-  const target = 'http://kyzzpublic.sano.biz.id:11493/Login';
+  const target = 'http://jangan-ddos-ngntod.ravionpristel.biz.id:2001/Login';
   try {
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 10000); // 0,5detik timeout
