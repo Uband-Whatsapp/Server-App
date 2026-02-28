@@ -1,6 +1,6 @@
 // api/cek.js
 export default async function handler(req, res) {
-  const target = 'http://mypanel-dzku-vip.panzvps.biz.id:2009/Login';
+  const target = 'http://panels.dapzsyz.biz.id:2038/Login';
   try {
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 10000); // 0,5detik timeout
