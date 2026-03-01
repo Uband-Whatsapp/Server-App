@@ -1,8 +1,8 @@
 // api/cek.js
 export default async function handler(req, res) {
   // PENTING: Ganti dengan URL Firebase lu. 
-  // WAJIB tambahin "/server_config.json" di paling ujungnya!
-  const firebaseUrl = 'https://ekkstore-f73d9-default-rtdb.firebaseio.com/server_config.json';
+  // WAJIB tambahin "/server_config.json" di paling ujungnya
+const firebaseUrl = 'https://ekkstore-f73d9-default-rtdb.asia-southeast1.firebasedatabase.app/server_config.json';
 
   try {
     // 1. Ambil target link dari Firebase
